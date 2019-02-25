@@ -34,7 +34,7 @@ var mytable = 'The table you want to query goes here';
 var tableSvc = azure.createTableService(accountname, accountkey);
 const result = await azureTS.queryAllAsync(tableSvc, mytable);
 // loop through results log the partition key and rowkey
-for (let r of results) {
+for (let r of result) {
   console.log('PartitionKey = ' + r.PartitionKey._ + ' RowKey = ' + r.RowKey._);
 }
 ```
@@ -59,7 +59,7 @@ var mypartition = 'The PartitionKey you want to query goes here';
 var tableSvc = azure.createTableService(accountname, accountkey);
 const result = await azureTS.queryPartitionAsync(tableSvc, mytable, mypartition);
 // loop through results log the row key
-for (let r of results) {
+for (let r of result) {
   console.log('RowKey = ' + r.RowKey._);
 }
 ```
@@ -87,7 +87,7 @@ var tableSvc = azure.createTableService(accountname, accountkey);
 const query = new azure.TableQuery().where('PartitionKey eq ? and attr1 == ?)', mypartition, myattr1);
 const result = await azureTS.queryPartitionAsync(tableSvc, mytable, mypartition);
 // loop through results log the row key and attr1
-for (let r of results) {
+for (let r of result) {
   console.log('RowKey = ' + r.RowKey._ + ' attr1 = ' + r.attr1._);
 }
 ```
@@ -125,7 +125,7 @@ var myrowkey = 'The RowKey you want to query goes here';
 var tableSvc = azure.createTableService(accountname, accountkey);
 const result = await azureTS.retrieveEntityAsync(tableSvc, mytable, mypartition, myrowkey);
 // log attr1 from entity (any attribute from the entity)
-console.log('attr1 = ' + r.attr1._);
+console.log('attr1 = ' + result.attr1._);
 ```
 
 ### insertEntityAsync(tableSvc, table, entity)
