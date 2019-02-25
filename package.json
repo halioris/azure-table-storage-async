@@ -1,7 +1,21 @@
 {
   "name": "azure-table-storage-async",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Azure table storage API's that return promises to support async/await syntax",
+  "license": "MIT",
+  "repository": "halioris/azure-table-storage-async",
+  "main": "app.js",
+  "keywords": [
+    "azure",
+    "table",
+    "storage",
+    "promise",
+    "async"
+  ],
   "author": {
     "name": "Chris Halioris"
+  },
+  "dependencies": {
+    "azure-storage": "^2.8.1"
   }
 }
