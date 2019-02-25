@@ -1,6 +1,6 @@
 {
   "name": "azure-table-storage-async",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Azure table storage API's that return promises to support async/await syntax",
   "license": "MIT",
   "repository": "halioris/azure-table-storage-async",
