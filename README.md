@@ -18,19 +18,19 @@ upon the azure-storage methods for additional capabilities.
 
 ## Methods
 
-* [queryAllAsync](#queryAllAsynctableSvc-tableName)
-* [queryPartitionAsync](#queryPartitionAsynctableSvc-tableName-partitionName)
-* [queryCustomAsync](#queryCustomAsynctableSvc-tableName-query)
-* [queryEntitiesAsync](#queryEntitiesAsynctableSvc-table-query-cont)
-* [retrieveEntityAsync](#retrieveEntityAsynctableSvc-table-partition-rowkey)
-* [insertEntityAsync](#insertEntityAsynctableSvc-table-entity)
-* [insertOrReplaceEntityAsync](#insertOrReplaceEntityAsynctableSvc-table-entity)
-* [replaceEntityAsync](#replaceEntityAsynctableSvc-table-entity)
-* [deleteEntityAsync](#deleteEntityAsynctableSvc-table-entity)
-* [createTableIfNotExistsAsync](#createTableIfNotExistsAsynctableSvc-table)
-* [executeBatchAsync](#executeBatchAsynctableSvc-table-batch)
-* [batchMerge](#batchMergetableSvc-table-list)
-* [batchDelete](#batchDeletetableSvc-table-list)
+* [queryAllAsync](#queryallasynctablesvc-tablename)
+* [queryPartitionAsync](#querypartitionasynctableavc-tablename-partitionname)
+* [queryCustomAsync](#querycustomasynctablesvc-tablename-query)
+* [queryEntitiesAsync](#queryentitiesasynctablesvc-table-query-cont)
+* [retrieveEntityAsync](#retrieveentityasynctablesvc-table-partition-rowkey)
+* [insertEntityAsync](#insertentityasynctablesvc-table-entity)
+* [insertOrReplaceEntityAsync](#insertorreplaceentityasynctablesvc-table-entity)
+* [replaceEntityAsync](#replaceentityasynctablesvc-table-entity)
+* [deleteEntityAsync](#deleteentityasynctablesvc-table-entity)
+* [createTableIfNotExistsAsync](#createtableifnotexistsasynctablesvc-table)
+* [executeBatchAsync](#executebatchasynctablesvc-table-batch)
+* [batchMerge](#batchmergetablesvc-table-list)
+* [batchDelete](#batchdeletetablesvc-table-list)
 
 ### queryAllAsync(tableSvc, tableName)
 
