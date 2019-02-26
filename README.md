@@ -19,7 +19,7 @@ upon the azure-storage methods for additional capabilities.
 ## Methods
 
 * [queryAllAsync](#queryallasynctablesvc-tablename)
-* [queryPartitionAsync](#querypartitionasynctableavc-tablename-partitionname)
+* [queryPartitionAsync](#querypartitionasynctablesvc-tablename-partitionname)
 * [queryCustomAsync](#querycustomasynctablesvc-tablename-query)
 * [queryEntitiesAsync](#queryentitiesasynctablesvc-table-query-cont)
 * [retrieveEntityAsync](#retrieveentityasynctablesvc-table-partition-rowkey)
