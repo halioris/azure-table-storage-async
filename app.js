@@ -113,6 +113,15 @@ exports.deleteEntityAsync = (tableSvc, table, entity) => {
     });
 };
 
+exports.createTableIfNotExistsAsync = (tableSvc, table) => {
+    return new Promise((resolve, reject) => {
+        tableSvc.createTableIfNotExists(table, function (error, result, response) {
+            if (error) reject(error);
+            else resolve(result);
+        });
+    });
+};
+
 exports.executeBatchAsync = (tableSvc, table, batch) => {
     return new Promise((resolve, reject) => {
         tableSvc.executeBatch(table, batch, function (error, result, response) {
@@ -157,3 +166,5 @@ exports.batchDelete = (tableSvc, table, list) => {
         }
     });
 };
+
+

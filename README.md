@@ -16,6 +16,22 @@ may be called using async/await syntax.  Many methods are named just like their 
 they simply execute that method and return a promise (exceptions are noted).  There are additional methods provided that build
 upon the azure-storage methods for additional capabilities.
 
+## Methods
+
+* [queryAllAsync](#queryAllAsynctableSvc-tableName)
+* [queryPartitionAsync](#queryPartitionAsynctableSvc-tableName-partitionName)
+* [queryCustomAsync](#queryCustomAsynctableSvc-tableName-query)
+* [queryEntitiesAsync](#queryEntitiesAsynctableSvc-table-query-cont)
+* [retrieveEntityAsync](#retrieveEntityAsynctableSvc-table-partition-rowkey)
+* [insertEntityAsync](#insertEntityAsynctableSvc-table-entity)
+* [insertOrReplaceEntityAsync](#insertOrReplaceEntityAsynctableSvc-table-entity)
+* [replaceEntityAsync](#replaceEntityAsynctableSvc-table-entity)
+* [deleteEntityAsync](#deleteEntityAsynctableSvc-table-entity)
+* [createTableIfNotExistsAsync](#createTableIfNotExistsAsynctableSvc-table)
+* [executeBatchAsync](#executeBatchAsynctableSvc-table-batch)
+* [batchMerge](#batchMergetableSvc-table-list)
+* [batchDelete](#batchDeletetableSvc-table-list)
+
 ### queryAllAsync(tableSvc, tableName)
 
 Queries all entities from a table.  This is done by calling `queryEntitiesAsync` repeatedly with no partition until no continuation token is returned.
@@ -24,6 +40,8 @@ Queries all entities from a table.  This is done by calling `queryEntitiesAsync`
 |---|---|
 | tableSvc | table service object created using `azure-storage.createTableService` |
 | tableName | name of the table to query |
+
+#### Example
 
 ```javascript
 var azure = require('azure-storage');
@@ -49,6 +67,8 @@ Queries all entities from a partition.  This is done by calling `queryEntitiesAs
 | tableName | name of the table to query |
 | partitionName | name of the partition to be queried |
 
+#### Example
+
 ```javascript
 var azure = require('azure-storage');
 var azureTS = require('azure-table-storage-async');
@@ -73,6 +93,8 @@ Executes a custom query defined in an azure-storage `TableQuery`.  This is done 
 | tableSvc | table service object created using `azure-storage.createTableService` |
 | tableName | name of the table to query |
 | query | an azure table query object created with a custom where clause, etc. |
+
+#### Example
 
 ```javascript
 var azure = require('azure-storage');
@@ -114,6 +136,8 @@ Executes the azure-storage `retrieveEntity` method
 | partition | name of the partition to query |
 | rowkey | RowKey of entity to be queried |
 
+#### Example
+
 ```javascript
 var azure = require('azure-storage');
 var azureTS = require('azure-table-storage-async');
@@ -138,6 +162,8 @@ Executes the azure-storage `insertEntity` method
 | table | name of the table to insert into |
 | entity | the entity to be inserted |
 
+#### Example
+
 ```javascript
 var azure = require('azure-storage');
 var azureTS = require('azure-table-storage-async');
@@ -152,7 +178,7 @@ var entGen = azure.TableUtilities.entityGenerator;
 var myentity = {
       PartitionKey: entGen.String(mypartition),
       RowKey: entGen.String(myrowkey),
-      attr1: entGen.String(myattr1) 
+      attr1: entGen.String(myattr1)
     };
 await azureTS.insertEntityAsync(tableSvc, mytable, myentity);
 ```
@@ -167,6 +193,8 @@ Executes the azure-storage `insertOrReplaceEntity` method
 | table | name of the table to insert/replace in |
 | entity | the entity to be inserted or replaced |
 
+#### Example
+
 ```javascript
 var azure = require('azure-storage');
 var azureTS = require('azure-table-storage-async');
@@ -181,7 +209,7 @@ var entGen = azure.TableUtilities.entityGenerator;
 var myentity = {
       PartitionKey: entGen.String(mypartition),
       RowKey: entGen.String(myrowkey),
-      attr1: entGen.String(myattr1) 
+      attr1: entGen.String(myattr1)
     };
 await azureTS.insertOrReplaceEntityAsync(tableSvc, mytable, myentity);
 ```
@@ -196,6 +224,8 @@ Executes the azure-storage `replaceEntity` method
 | table | name of the table to update |
 | entity | the entity to be replaced |
 
+#### Example
+
 ```javascript
 var azure = require('azure-storage');
 var azureTS = require('azure-table-storage-async');
@@ -210,7 +240,7 @@ var entGen = azure.TableUtilities.entityGenerator;
 var myentity = {
       PartitionKey: entGen.String(mypartition),
       RowKey: entGen.String(myrowkey),
-      attr1: entGen.String(myattr1) 
+      attr1: entGen.String(myattr1)
     };
 await azureTS.replaceEntityAsync(tableSvc, mytable, myentity);
 ```
@@ -224,6 +254,8 @@ Executes the azure-storage `deleteEntity` method
 | tableSvc | table service object created using `azure-storage.createTableService` |
 | table | name of the table to delete from |
 | entity | the entity to be deleted |
+
+#### Example
 
 ```javascript
 var azure = require('azure-storage');
@@ -240,6 +272,27 @@ var myentity = {
       RowKey: entGen.String(myrowkey)
     };
 await azureTS.deleteEntityAsync(tableSvc, mytable, myentity);
+```
+
+### createTableIfNotExistsAsync(tableSvc, table)
+
+Executes the azure-storage `createTableIfNotExists` method
+
+| Parameter | Description |
+|---|---|
+| tableSvc | table service object created using `azure-storage.createTableService` |
+| table | name of the table to check existence of and create if necessary |
+
+#### Example
+
+```javascript
+var azure = require('azure-storage');
+var azureTS = require('azure-table-storage-async');
+var accountname = 'Your azure account name goes here';
+var accountkey = 'Your azure account key goes here';
+var mytable = 'The table you want to query goes here';
+var tableSvc = azure.createTableService(accountname, accountkey);
+await azureTS.createTableIfNotExistsAsync(tableSvc, mytable);
 ```
 
 ### executeBatchAsync(tableSvc, table, batch)
@@ -261,6 +314,8 @@ Perform a batch merge on an array of entites.  The array may be as large as you 
 | tableSvc | table service object created using `azure-storage.createTableService` |
 | table | name of the table the batch will operate against |
 | list | an array of entities to be merged into the table |
+
+#### Example
 
 ```javascript
 var azure = require('azure-storage');
@@ -291,6 +346,8 @@ Perform a batch delete on an array of entites.  The array may be as large as you
 | tableSvc | table service object created using `azure-storage.createTableService` |
 | table | name of the table the batch will operate against |
 | list | an array of entities to be deleted from the table |
+
+#### Example
 
 ```javascript
 var azure = require('azure-storage');
