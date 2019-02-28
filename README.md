@@ -28,6 +28,7 @@ upon the azure-storage methods for additional capabilities.
 * [replaceEntityAsync](#replaceentityasynctablesvc-table-entity)
 * [deleteEntityAsync](#deleteentityasynctablesvc-table-entity)
 * [createTableIfNotExistsAsync](#createtableifnotexistsasynctablesvc-table)
+* [doesTableExistAsync](#createtableifnotexistsasynctablesvc-table)
 * [executeBatchAsync](#executebatchasynctablesvc-table-batch)
 * [batchMerge](#batchmergetablesvc-table-list)
 * [batchDelete](#batchdeletetablesvc-table-list)
@@ -293,6 +294,27 @@ var accountkey = 'Your azure account key goes here';
 var mytable = 'The table you want to query goes here';
 var tableSvc = azure.createTableService(accountname, accountkey);
 await azureTS.createTableIfNotExistsAsync(tableSvc, mytable);
+```
+
+### doesTableExistAsync(tableSvc, table)
+
+Executes the azure-storage `doesTableExist` method
+
+| Parameter | Description |
+|---|---|
+| tableSvc | table service object created using `azure-storage.createTableService` |
+| table | name of the table to check existence of |
+
+#### Example
+
+```javascript
+var azure = require('azure-storage');
+var azureTS = require('azure-table-storage-async');
+var accountname = 'Your azure account name goes here';
+var accountkey = 'Your azure account key goes here';
+var mytable = 'The table you want to query goes here';
+var tableSvc = azure.createTableService(accountname, accountkey);
+await azureTS.doesTableExistAsync(tableSvc, mytable);
 ```
 
 ### executeBatchAsync(tableSvc, table, batch)

@@ -122,6 +122,15 @@ exports.createTableIfNotExistsAsync = (tableSvc, table) => {
     });
 };
 
+exports.doesTableExistAsync = (tableSvc, table) => {
+    return new Promise((resolve, reject) => {
+        tableSvc.doesTableExist(table, function (error, result, response) {
+            if (error) reject(error);
+            else resolve(result);
+        });
+    });
+};
+
 exports.executeBatchAsync = (tableSvc, table, batch) => {
     return new Promise((resolve, reject) => {
         tableSvc.executeBatch(table, batch, function (error, result, response) {
