@@ -113,6 +113,21 @@ exports.deleteEntityAsync = (tableSvc, table, entity) => {
     });
 };
 
+/**
+ * 
+ * @param {any} tableSvc - azure-storage TableService object to use
+ * @param {string} table - name of the table to create
+ * @returns {Promise} - promise for result
+ */
+exports.createTableAsync = (tableSvc, table) => {
+    return new Promise((resolve, reject) => {
+        tableSvc.createTable(table, function (error, result, response) {
+            if (error) reject(error);
+            else resolve(result);
+        });
+    });
+};
+
 exports.createTableIfNotExistsAsync = (tableSvc, table) => {
     return new Promise((resolve, reject) => {
         tableSvc.createTableIfNotExists(table, function (error, result, response) {
@@ -175,5 +190,3 @@ exports.batchDelete = (tableSvc, table, list) => {
         }
     });
 };
-
-

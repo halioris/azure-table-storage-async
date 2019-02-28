@@ -27,8 +27,9 @@ upon the azure-storage methods for additional capabilities.
 * [insertOrReplaceEntityAsync](#insertorreplaceentityasynctablesvc-table-entity)
 * [replaceEntityAsync](#replaceentityasynctablesvc-table-entity)
 * [deleteEntityAsync](#deleteentityasynctablesvc-table-entity)
+* [createTableAsync](#createtableasynctablesvc-table)
 * [createTableIfNotExistsAsync](#createtableifnotexistsasynctablesvc-table)
-* [doesTableExistAsync](#createtableifnotexistsasynctablesvc-table)
+* [doesTableExistAsync](#doestableexistasynctablesvc-table)
 * [executeBatchAsync](#executebatchasynctablesvc-table-batch)
 * [batchMerge](#batchmergetablesvc-table-list)
 * [batchDelete](#batchdeletetablesvc-table-list)
@@ -273,6 +274,27 @@ var myentity = {
       RowKey: entGen.String(myrowkey)
     };
 await azureTS.deleteEntityAsync(tableSvc, mytable, myentity);
+```
+
+### createTableAsync(tableSvc, table)
+
+Executes the azure-storage `createTable` method
+
+| Parameter | Description |
+|---|---|
+| tableSvc | table service object created using `azure-storage.createTableService` |
+| table | name of the table to create |
+
+#### Example
+
+```javascript
+var azure = require('azure-storage');
+var azureTS = require('azure-table-storage-async');
+var accountname = 'Your azure account name goes here';
+var accountkey = 'Your azure account key goes here';
+var mytable = 'The table you want to query goes here';
+var tableSvc = azure.createTableService(accountname, accountkey);
+await azureTS.createTableAsync(tableSvc, mytable);
 ```
 
 ### createTableIfNotExistsAsync(tableSvc, table)
